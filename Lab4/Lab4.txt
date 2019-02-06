@@ -1,0 +1,113 @@
+Script started on Wed Apr 26 06:55:31 2017
+[?1034hbash-3.2$ cat Lab4
+cat: Lab4: No such file or directory
+bash-3.2$ cw[Kat Lab4.java
+/**
+*   Driver program for Lab4. This program converts a simple equation from infix to postfix notation, 
+*   and returns the numeric result.
+*
+*   @author:   Tristan Mclennan
+*   @version:  1.0
+*   @date:     4/22/17
+*
+*
+*
+*
+**/
+
+// ****************************************************************************//
+// Lab Assignment 4 is a driver program for our postfix calculator implementation.
+// Interfaces with the user and executes any commands as needed.				                      
+// ****************************************************************************//
+
+import java.io.*;
+import java.util.*;
+
+public class Lab4
+{
+   public static void main (String [] args) // begin main
+   {
+
+    boolean runLoop = true;
+    int output = 0;
+    char inputChar;
+
+    //Scanner scan = new Scanner(System.in);
+
+
+//  This loop takes input from user, and executes chosen action.
+//  breaks out of loop when runLoop is set to false:
+    do
+    {    
+          String inputString;
+	  Scanner scan = new Scanner(System.in);
+          System.out.print("\nInput infix expression: ");
+
+          // User input is stored in inputString:
+          inputString = scan.nextLine();
+
+          // Creates new Calculator object for our driver program to use:
+          Calculator myCalc = new Calculator(inputString);
+
+          System.out.println("Infix: " + inputString); 
+          System.out.println("Postfix: " + myCalc.getPostFix());
+          System.out.println("Result: " + myCalc.evaluate());
+          System.out.print("Continue? (Enter Y/N): ");
+          inputChar = scan.next().charAt(0);
+
+          if ((inputChar == 'N') || (inputChar == 'n'))
+              runLoop = false;
+
+    } // end while
+    while (runLoop); 
+
+   }  // end main
+} // end Lab4
+bash-3.2$ cat[K[K[Kjavac Lab4.java
+bash-3.2$ java Lan[Kb4
+
+Input infix expression: (4-2)*3
+Infix: (4-2)*3
+Postfix: 42-3*
+Result: 6
+Continue? (Enter Y/N): Y
+
+Input infix expression: 7-3+5
+Infix: 7-3+5
+Postfix: 73-5+
+Result: 9
+Continue? (Enter Y/N): Y
+
+Input infix expression: 6/(2*3)
+Infix: 6/(2*3)
+Postfix: 623*/
+Result: 1
+Continue? (Enter Y/N): Y
+
+Input infix expression: (2+3)*4
+Infix: (2+3)*4
+Postfix: 23+4*
+Result: 20
+Continue? (Enter Y/N): Y
+
+Input infix expression: 2-(3+4)
+Infix: 2-(3+4)
+Postfix: 234+-
+Result: -5
+Continue? (Enter Y/N): 2-  Y
+
+Input infix expression: 2-(6/3*4)
+Infix: 2-(6/3*4)
+Postfix: 263/4*-
+Result: -6
+Continue? (Enter Y/N): Y
+
+Input infix expression: 8/4/2-(3+5)*6
+Infix: 8/4/2-(3+5)*6
+Postfix: 84/2/35+6*-
+Result: -47
+Continue? (Enter Y/N): N
+bash-3.2$ exit
+exit
+
+Script done on Wed Apr 26 07:01:14 2017
